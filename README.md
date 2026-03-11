@@ -37,6 +37,13 @@ Buka Terminal di folder tempat file .java berada.
 logika implementasi
 kita menggunakan penmdekatan Linear Filtering. Program akan membaca setiap elemen atau satu per satu, memeriksa kondisinya, lalu memasukanannya ke dalam dua wadah (ArrayList) yg berbeda.
 
+Spesifikasi Teknis Implementasi (Java)
+- Untuk menyelesaikan kasus ini, Kita perlu menggunakan beberapa komponen inti Java:
+- Scanner: Untuk membaca input dari System.in.
+- String Split: Untuk memecah input string berdasarkan pemisah (koma atau spasi).
+- ArrayList: Karena jumlah pengunjung tidak diketahui di awal, ArrayList<Integer> lebih fleksibel daripada array statis.
+- Try-Catch: Untuk menangani edge case berupa input teks atau karakter non-angka agar program tidak force close.
+
 Alur Kerja Program
 1. Inisialisasi: Siapkan dua list kosong, misalnya list_lolos dan list_gagal.
 3. Iterasi: Lakukan perulangan untuk setiap data usia yang masuk.
@@ -47,3 +54,24 @@ Alur Kerja Program
 - Jika syarat terpenuhi, masukkan ke list_lolos.
 - Jika tidak, masukkan ke list_gagal.
 5. Output: Cetak kedua list tersebut sebagai string.
+
+kasus Batas (Edge Cases)
+Sebagai mahasiswa Informatika, Anda Harus Menguji kode dengan skenario ekstrem agar program tidak crash atau salah logika:
+
+1. Batas Ambang (Boundary Values)
+- Usia 27: Harus masuk ke daftar Gagal (karena kurang 1 tahun dari syarat rekrutmen).
+- Usia 28: Harus masuk ke daftar Lolos (tepat di batas minimal).
+- Usia 118: Harus masuk ke daftar Lolos (tepat di batas maksimal).
+- Usia 119: Harus masuk ke daftar Gagal (melebihi rekor tertua).
+
+2. Input Tidak Valid (Non-Numeric)
+- String/Teks: Bagaimana jika inputnya "dua puluh"? Program harus bisa menangani error (exception handling) agar tidak berhenti tiba-tiba.
+- Karakter Kosong: Jika pengguna hanya menekan enter tanpa mengisi angka.
+
+3. Angka Mustahil (Out of Bounds)
+- Angka Negatif: Usia -5 tidak masuk akal, harus otomatis masuk daftar Gagal.
+- Angka Nol: Usia 0 juga harus masuk daftar Gagal.
+
+4. Struktur Data
+- Daftar Kosong: Jika tidak ada orang di antrean sama sekali.
+- Semua Gagal: Jika dari 100 orang, tidak ada satu pun yang memenuhi syarat. Program tetap harus mencetak baris "Lolos" meski isinya kosong.
